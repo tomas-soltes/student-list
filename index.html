@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" />
+    <title>Hogwarts in 1991</title>
+</head>
+
+<body>
+    <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+    <div class="student_grid">
+        <div class="student-list card_style">
+            <h2>Student list</h2>
+
+            <div class="student-list-box">
+
+                <li class="row information">
+                    <div></div>
+                    <input id="firstName" class="inputSort sortByFirstName" name="sort" type="radio"><label
+                        for="firstName">First Name</label>
+                    <input id="lastName" class="inputSort sortByLastName" name="sort" type="radio"><label
+                        for="lastName">Last
+                        Name</label>
+                    <input id="house" class="inputSort sortByHouse" name="sort" type="radio"><label
+                        for="house">House</label>
+                    <!-- <img src="filter.png" alt="Filter" onclick="filter()"> -->
+                </li>
+
+                <!--                 <li class="row information filter filter-hidden">
+                    <div class="house-select">
+                        <p>Filter by House</p>
+                        <input class="inputFilter" name="filter" type="radio" id="All"><label for="All">All</label>
+                        <input checked class="inputFilter" name="filter" type="radio" id="Hufflepuff"><label
+                            for="Hufflepuff">Hufflepuff</label>
+                        <input class="inputFilter" name="filter" type="radio" id="Gryffindor"><label
+                            for="Gryffindor">Gryffindor</label>
+                        <input class="inputFilter" name="filter" type="radio" id="Ravenclaw"><label
+                            for="Ravenclaw">Ravenclaw</label>
+                        <input class="inputFilter" name="filter" type="radio" id="Slytherin"><label
+                            for="Slytherin">Slytherin</label>
+                    </div>
+                </li> -->
+                <div class="students">
+                    <ul class="students_fill">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="student-list-info">
+            <div class="student-list_details card_style">
+                <h2>Filter</h2>
+                <ul>
+                    <h3>Students</h3>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="All" checked><label
+                            for="All">All</label>
+                        <p class="student-list_number list_number_all">57</p>
+                    </li>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="Attending"><label
+                            for="Attending">Attending</label>
+                        <p class="student-list_number list_number_attending">54</p>
+                    </li>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="Expelled"><label
+                            for="Expelled">Expelled</label>
+                        <p class="student-list_number list_number_expelled">5</p>
+                    </li>
+                    <h3>Houses</h3>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="Hufflepuff"><label
+                            for="Hufflepuff">Hufflepuff</label>
+                        <p class="student-list_number list_number_house_1">14</p>
+                    </li>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="Gryffindor"><label
+                            for="Gryffindor">Gryffindor</label>
+                        <p class="student-list_number list_number_house_2">16</p>
+                    </li>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="Ravenclaw"><label
+                            for="Ravenclaw">Ravenclaw</label>
+                        <p class="student-list_number list_number_house_3">15</p>
+                    </li>
+                    <li>
+                        <input class="inputFilter" name="filter" type="radio" id="Slytherin"><label
+                            for="Slytherin">Slytherin</label>
+                        <p class="student-list_number list_number_house_4">14</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="student_info card_style">
+                <h2>Student Profile</h2>
+                <div class="placeholder_student_profile"></div>
+                <template class="template_student_profile">
+                    <img class="student_profile_photo" src="img/students/abbott_h.png" alt="#" style="width: 120px">
+                    <div class="student_profile_basic">
+                        <p class="student_profile_firstName"></p>
+                        <p class="student_profile_middleName"></p>
+                        <p class="student_profile_nickName"></p>
+                        <p class="student_profile_lastName"></p>
+                    </div>
+                    <img class="student_profile_crest" src="" style="width: 70px;" alt="#">
+
+
+                    <div class="additional-information__left">
+                        <p class="expeled-status"><span>Status: </span></p>
+                        <p class="blood-type"><span>Blood type: </span></p>
+                    </div>
+                    <div class="additional-information__right">
+                        <p class="prefect-status"><span>Prefect: </span></p>
+                        <p class="membership-status"><span>Membership: </span></p>
+                    </div>
+                    <button class="expelBtn">Expell</button>
+
+                </template>
+            </div>
+        </div>
+    </div>
+</body>
+
+<template class="template_students">
+    <li class="row student">
+        <img class="student_photo" src="" alt="#">
+        <p class="student_name firstName"></p>
+        <p class="student_name lastName"></p>
+        <p class="student_house"></p>
+    </li>
+</template>
+
+<script src="main.js"></script>
+
+</html>

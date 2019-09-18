@@ -1,0 +1,190 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    /* border: 1px solid green;  */
+}
+
+@font-face {
+    font-family: "Harry";
+    src: url("/harryp.ttf") format('truetype');
+}
+
+body {
+    font-family: sofia-pro, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 62.5%;
+    background-color: #ffffff;
+    padding: 5% 10%;
+    /* background-image: url('clouds.png');
+    background-size: cover; */
+}
+
+h1 {
+    /* font-family: "Harry"; */
+    color: #EA5045;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.student_grid{
+    display: grid;
+    grid-template-columns: 60% 30%;
+    grid-auto-flow: row;
+    grid-template-areas: "list list-info";
+    grid-gap: 10%;
+    grid-template-rows: min-content;
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+.students ul li img {
+    width: 70%;
+    padding: 0.3rem 1rem 0.3rem 0.3rem;
+}
+
+label{
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #666666;
+}
+
+label:hover{
+    color: #EA5045;
+}
+input[type=radio]:checked + label {
+    color: #EA5045;
+  } 
+
+input{
+    display: none;
+}
+
+.student-list{
+    grid-area: list; 
+}
+
+.card_style{
+    padding: 2rem;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.137);
+    border-radius: 0.4rem;
+}
+
+.card_style h2{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.student-list_details li{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    padding: 0.2rem 0;
+}
+
+.student-list_details h3{
+    padding: 1rem 0 .5rem 0;
+    font-size: .8rem;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.list_houses{
+margin-top: 1rem;
+}
+
+.student-list_details{
+    grid-area: list-details; 
+    margin-bottom: 3rem;
+}
+
+.student-list-info{
+    grid-area: list-info;
+}
+
+.student_info{
+grid-area: student-info;
+}
+
+.student-list-box{
+}
+
+
+.row {
+    display: grid;
+    grid-template-columns: 10% 20% 20% 50%;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.048);
+}
+
+.row p{
+    padding: 0.8rem 0;
+    margin: auto 0;
+}
+
+.row.information {
+    box-shadow: none;
+}
+
+.information {
+    border-bottom: 1px solid #EA5045;
+    position: relative;
+}
+
+
+.border-none {
+    border-bottom: none;
+}
+
+.information p {
+    display: inline;
+}
+
+
+p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #6e6d6d;
+}
+
+.button {
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+.information p,
+.filter input {
+    font-weight: 500;
+}
+
+.filter {
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.filter label {
+    margin-left: 2rem;
+}
+
+.filter p:not(:first-of-type) {
+    cursor: pointer;
+}
+
+
+@media all and (max-width:900px) {
+
+}
+
+@media all and (max-width:500px) {
+
+}
+
