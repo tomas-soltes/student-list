@@ -26,6 +26,12 @@
                         Name</label>
                     <input id="house" class="inputSort sortByHouse" name="sort" type="radio"><label
                         for="house">House</label>
+                    <input id="blood" class="inputSort sortByHouse" name="sort" type="radio"><label for="blood">Blood
+                        type</label>
+                    <input id="prefect" class="inputSort sortByHouse" name="sort" type="radio"><label
+                        for="prefect">Prefect</label>
+                    <input id="membership" class="inputSort sortByHouse" name="sort" type="radio"><label
+                        for="membership">Membership</label>
                     <!-- <img src="filter.png" alt="Filter" onclick="filter()"> -->
                 </li>
 
@@ -110,12 +116,22 @@
 
 
                     <div class="additional-information__left">
-                        <p class="expeled-status"><span>Status: </span></p>
-                        <p class="blood-type"><span>Blood type: </span></p>
+                        <div><span>Status: </span>
+                            <p class="expeled-status"></p>
+                        </div>
+                        <div><span>Blood type: </span>
+                            <p class="blood-status"></p>
+                        </div>
                     </div>
                     <div class="additional-information__right">
-                        <p class="prefect-status"><span>Prefect: </span></p>
-                        <p class="membership-status"><span>Membership: </span></p>
+                        <div><span>Prefect: </span>
+                            <p class="prefect-status"></p>
+                            <button class="prefectBtn">Make a prefect</button>
+                        </div>
+                        <div><span>Membership: </span>
+                            <p class="membership-status"></p>
+                            <button class="squadBtn">Add to a squad</button>
+                        </div>
                     </div>
                     <button class="expelBtn">Expell</button>
 
@@ -123,14 +139,32 @@
             </div>
         </div>
     </div>
+
+    <div class="modal">
+        <h2>There are already two prefects in this house</h2>
+        <div class="modal_fill"></div>
+        <template class="template_modal">
+            <li class="row student modal_student">
+                <img class="modal_profile_photo" src="img/students/abbott_h.png" alt="#" style="width: 120px">
+                <p class="modal_firstName firstName"></p>
+                <p class="modal_lastName lastName"></p>
+                <p class="modal_house"></p>
+                <img class="modal_prefect">
+                <button class="removeStudent_1">Remove</button>
+            </li>
+        </template>
+    </div>
 </body>
 
 <template class="template_students">
     <li class="row student">
-        <img class="student_photo" src="" alt="#">
+        <img class="student_photo">
         <p class="student_name firstName"></p>
         <p class="student_name lastName"></p>
         <p class="student_house"></p>
+        <img class="student_blood">
+        <img class="student_prefect">
+        <img class="student_squad">
     </li>
 </template>
 
