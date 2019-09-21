@@ -10,13 +10,14 @@
 </head>
 
 <body>
-    <h1>Hogwarts School of Witchcraft and Wizardry</h1>
-    <div class="student_grid">
+    <section class="section_left">
+        <h1>Hogwarts School of Witchcraft and Wizardry</h1>
         <div class="student-list card_style">
-            <h2>Student list</h2>
-
+            <div class="student-list_heading">
+                <h2 class="list_title_left">Student list</h2>
+                <h2 class="list_title_right">All</h2>
+            </div>
             <div class="student-list-box">
-
                 <li class="row information">
                     <div></div>
                     <input id="firstName" class="inputSort sortByFirstName" name="sort" type="radio"><label
@@ -32,23 +33,8 @@
                         for="prefect">Prefect</label>
                     <input id="membership" class="inputSort sortByHouse" name="sort" type="radio"><label
                         for="membership">Membership</label>
-                    <!-- <img src="filter.png" alt="Filter" onclick="filter()"> -->
                 </li>
 
-                <!--                 <li class="row information filter filter-hidden">
-                    <div class="house-select">
-                        <p>Filter by House</p>
-                        <input class="inputFilter" name="filter" type="radio" id="All"><label for="All">All</label>
-                        <input checked class="inputFilter" name="filter" type="radio" id="Hufflepuff"><label
-                            for="Hufflepuff">Hufflepuff</label>
-                        <input class="inputFilter" name="filter" type="radio" id="Gryffindor"><label
-                            for="Gryffindor">Gryffindor</label>
-                        <input class="inputFilter" name="filter" type="radio" id="Ravenclaw"><label
-                            for="Ravenclaw">Ravenclaw</label>
-                        <input class="inputFilter" name="filter" type="radio" id="Slytherin"><label
-                            for="Slytherin">Slytherin</label>
-                    </div>
-                </li> -->
                 <div class="students">
                     <ul class="students_fill">
 
@@ -56,10 +42,12 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="student-list-info">
-            <div class="student-list_details card_style">
-                <h2>Filter</h2>
+    <section class="section_right">
+        <div class="student-list_details card_style">
+            <h2>Filter</h2>
+            <div class="student-list_details_grid">
                 <ul>
                     <h3>Students</h3>
                     <li>
@@ -77,6 +65,8 @@
                             for="Expelled">Expelled</label>
                         <p class="student-list_number list_number_expelled">5</p>
                     </li>
+                </ul>
+                <ul>
                     <h3>Houses</h3>
                     <li>
                         <input class="inputFilter" name="filter" type="radio" id="Hufflepuff"><label
@@ -100,61 +90,84 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="student_info card_style">
-                <h2>Student Profile</h2>
-                <div class="placeholder_student_profile"></div>
-                <template class="template_student_profile">
-                    <img class="student_profile_photo" src="img/students/abbott_h.png" alt="#" style="width: 120px">
-                    <div class="student_profile_basic">
-                        <p class="student_profile_firstName"></p>
-                        <p class="student_profile_middleName"></p>
-                        <p class="student_profile_nickName"></p>
-                        <p class="student_profile_lastName"></p>
-                    </div>
-                    <img class="student_profile_crest" src="" style="width: 70px;" alt="#">
-
-
-                    <div class="additional-information__left">
-                        <div><span>Status: </span>
-                            <p class="expeled-status"></p>
-                        </div>
-                        <div><span>Blood type: </span>
-                            <p class="blood-status"></p>
-                        </div>
-                    </div>
-                    <div class="additional-information__right">
-                        <div><span>Prefect: </span>
-                            <p class="prefect-status"></p>
-                            <button class="prefectBtn">Make a prefect</button>
-                        </div>
-                        <div><span>Membership: </span>
-                            <p class="membership-status"></p>
-                            <button class="squadBtn">Add to a squad</button>
-                        </div>
-                    </div>
-                    <button class="expelBtn">Expell</button>
-
-                </template>
-            </div>
         </div>
-    </div>
+
+        <div class="student_info card_style">
+            <h2>Student Profile</h2>
+            <div class="placeholder_student_profile"></div>
+        </div>
+    </section>
+
 
     <div class="modal">
         <h2>There are already two prefects in this house</h2>
-        <div class="modal_fill"></div>
-        <template class="template_modal">
-            <li class="row student modal_student">
-                <img class="modal_profile_photo" src="img/students/abbott_h.png" alt="#" style="width: 120px">
-                <p class="modal_firstName firstName"></p>
-                <p class="modal_lastName lastName"></p>
-                <p class="modal_house"></p>
-                <img class="modal_prefect">
-                <button class="removeStudent_1">Remove</button>
-            </li>
-        </template>
+        <ul class="modal_fill"></ul>
     </div>
+
+    <div class="modal_voldemort">
+            <h2>You fool</h2>
+            <img src="img/voldemort.png" alt="">
+        </div>
 </body>
+
+<template class="template_modal">
+    <li class="modal_student">
+        <img class="modal_profile_photo" src="img/students/abbott_h.png" alt="#">
+        <p class="modal_firstName firstName"></p>
+        <p class="modal_lastName lastName"></p>
+        <img class="modal_prefect">
+        <p class="modal_remove"><button class="remove_student">Remove</button></p>
+        <p class="modal_add"><button class="add_student">Add</button></p>
+    </li>
+</template>
+
+
+<template class="template_student_profile">
+    <div class="student_profile_image_box">
+        <div></div>
+        <img class="student_profile_photo" src="img/students/abbott_h.png">
+        <img class="student_profile_crest">
+        <img class="prefect_status_img">
+    </div>
+    <ul class="student_profile_grid">
+        <li class="student_profile_firstName_li">
+            <span>First Name </span>
+            <p class="student_profile_firstName"></p>
+        </li>
+        <li class="student_profile_middleName_li">
+            <span>Middle Name </span>
+            <p class="student_profile_middleName"></p>
+        </li>
+        <li class="student_profile_nickName_li">
+            <span>Nickname </span>
+            <p class="student_profile_nickName"></p>
+        </li>
+        <li class="student_profile_lastName_li">
+            <span>Last name </span>
+            <p class="student_profile_lastName"></p>
+        </li>
+        <li class="student_profile_status_li">
+            <span>Status </span>
+            <p class="expelled_status"></p>
+            <button class="expelBtn"></button>
+        </li>
+        <li>
+            <span>Blood type </span>
+            <p class="blood_status"></p>
+        </li>
+
+        <li><span>Prefect </span>
+            <p class="prefect_status"></p>
+            <button class="addPrefectBtn">Add</button>
+            <button class="removePrefectBtn">Remove</button>
+        </li>
+        <li><span>Membership </span>
+            <p class="membership_status"></p>
+            <button class="addSquadBtn">Add</button>
+            <button class="removeSquadBtn">Remove</button>
+        </li>
+    </ul>
+</template>
 
 <template class="template_students">
     <li class="row student">

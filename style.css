@@ -3,18 +3,12 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
     transition: all 0.4s ease-in-out;
-    /* border: 1px solid green;   */
 }
 
-:root{
+:root {
     --red: #EA5045;
-}
-
-@font-face {
-    font-family: "Harry";
-    src: url("/harryp.ttf") format('truetype');
 }
 
 body {
@@ -22,147 +16,240 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 62.5%;
-    background-color: #ffffff;
-    padding: 5% 10%;
-    /* background-image: url('clouds.png');
-    background-size: cover; */
+    height: 100vh;
+    width: 100%;
 }
 
 h1 {
-    /* font-family: "Harry"; */
     color: var(--red);
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-
-.student_grid{
-    display: grid;
-    grid-template-columns: 60% 30%;
-    grid-auto-flow: row;
-    grid-template-areas: "list list-info";
-    grid-gap: 10%;
-    grid-template-rows: min-content;
+    font-size: 1.9rem;
+    margin: 0 2rem 1.5rem 2.5rem;
 }
 
 ul {
     list-style: none;
 }
 
-ul li{
-    cursor: pointer;
-}
-
-label{
+label {
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
     color: #666666;
 }
 
-label:hover{
+label:hover {
     color: var(--red);
 }
-input[type=radio]:checked + label {
-    color: var(--red);
-  } 
 
-input{
+input[type=radio]:checked+label {
+    color: var(--red);
+}
+
+input {
     display: none;
 }
 
-.card_style{
+.card_style {
     padding: 2rem;
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(253, 253, 253);
     box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.137);
     border-radius: 0.4rem;
 }
 
-.card_style h2{
+.card_style h2 {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: .3rem;
 }
 
-.student-list{
-    padding: 2rem 0;
-    grid-area: list; 
+.student-list {
+    padding: 2rem;
+    width: 100%;
 }
 
-.student-list_details li{
+.student-list_heading {
+    width: 100%;
+    position: relative;
+    height: 2rem;
+    padding: 1rem;
+}
+
+.student-list_heading h2 {
+    position: absolute;
+    top: 0;
+}
+
+.student-list_left {
+    left: 0;
+}
+
+.list_title_right {
+    right: 2%;
+    color: var(--red);
+}
+
+.section_left {
+    position: fixed;
+    padding: 3% 5% 5% 5%;
+    width: 65%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.section_right {
+    position: fixed;
+    width: 35%;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    padding: 7% 4% 4% 4%;
+}
+
+.student-list_details_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+}
+
+.student-list_details li {
     display: grid;
     grid-template-columns: 90% 10%;
     padding: 0.2rem 0;
 }
 
-.student-list_details h3{
+.student-list_details h3 {
     padding: 1rem 0 .5rem 0;
     font-size: .8rem;
     font-weight: 600;
     color: #2c2c2c;
 }
 
-.list_houses{
-margin-top: 1rem;
+.list_houses {
+    margin-top: 1rem;
 }
 
-.student-list_details{
-    grid-area: list-details; 
-    margin-bottom: 3rem;
+.student-list_details {
+    margin-bottom: 2rem;
 }
 
-.student-list-info{
-    grid-area: list-info;
+
+.student_info {
+    height: 55vh;
 }
 
-.student_info{
-grid-area: student-info;
+.student_profile_image_box {
+    width: 100%;
+    position: relative;
+    text-align: center;
 }
 
-.student-list-box{
+.student_profile_photo {
+    width: 38%;
+    padding: 1.5rem 0 2.5rem 0;
 }
 
+.student_profile_crest {
+    position: absolute;
+    width: 18%;
+    top: 72%;
+    left: 31%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.prefect_status_img {
+    width: 16%;
+    position: absolute;
+    top: 19%;
+    left: 68%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
 
 .row {
     display: grid;
-    grid-template-columns: 7% repeat(6, 1fr);
+    grid-template-columns: 8% repeat(6, 1fr);
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.048);
 }
 
-.students ul li img{
-    
+.students {
+    overflow: scroll;
+    height: 65vh;
 }
+
+.students ul li img {
+    width: 100%;
+    display: grid;
+    align-content: center;
+    margin: auto 0;
+}
+
+.students ul li {
+    cursor: pointer;
+}
+
+.students ul li p {
+    display: grid;
+    align-content: center;
+}
+
 
 .students ul li:hover {
     background-color: var(--red);
 }
 
-.students ul li:hover p{
+.students ul li:hover p {
     color: white;
 }
 
-.student_photo{
+.student_profile_grid li {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+.student_profile_grid li span {
+    padding: 0.2rem 0;
+}
+
+.student_profile_grid button {
+    margin: 0.3rem auto;
     width: 70%;
-    padding: 0.3rem;
+    padding: 0.2rem;
+    background-color: #EA5045;
+    color: white;
+    border-radius: .6rem;
 }
 
-.student_blood{
-    width: 1.3rem;
-    padding: 0.5rem;
+button.addPrefectBtn,
+button.addSquadBtn {
+    background-color: rgb(2, 150, 27);
 }
 
-.student_prefect{
-    width: 2.5rem;
-    padding: 0.3rem;
+.student_profile_status_li {
+    margin-top: 1.5rem;
 }
 
-.student_squad{
-    width: 2.2rem;
-    padding: 0.3rem;
+.student_photo {
+    padding: 0.4rem 0.7rem 0.4rem .4rem;
 }
 
-.row p{
+.student_blood {
+    padding: .3rem 42%;
+}
+
+.student_prefect {
+    padding: .3rem 34%;
+    min-height: 100%;
+}
+
+.student_squad {
+    padding: .3rem 34%;
+    min-height: 100%;
+}
+
+.row p {
     padding: 0.8rem 0;
-    margin: auto 0;
 }
 
 .row.information {
@@ -170,7 +257,8 @@ grid-area: student-info;
 }
 
 .information {
-    border-bottom: 1px solid #EA5045;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(83, 83, 83, 0.192);
     position: relative;
 }
 
@@ -196,9 +284,16 @@ span {
     color: #1f1f1f;
 }
 
+button,
 .button {
     cursor: pointer;
-    transition: all .2s ease-in;
+}
+
+.expelBtn,
+li.student_profile_lastName_li,
+li.student_profile_middleName_li,
+li.student_profile_nickName_li {
+    display: none;
 }
 
 .information p,
@@ -220,25 +315,86 @@ span {
     cursor: pointer;
 }
 
-.modal{
+.modal {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    width: 30vw;
-    height: 30vh;
+    transform: translate(-50%, -50%);
+    width: 45vw;
     padding: 4rem;
     background-color: rgb(255, 255, 255);
     box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.137);
     border-radius: 1rem;
 }
 
-@media all and (max-width:900px) {
-
+.modal h2 {
+    padding-bottom: 2rem;
 }
 
-@media all and (max-width:500px) {
-
+.modal ul li img {
+    width: 100%;
+    padding: 0.5rem;
+    margin: auto 0;
 }
 
+.modal_student {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.137);
+    border-radius: 1rem;
+    display: grid;
+    padding: 5%;
+    margin: 3rem 0;
+    grid-template-columns: 10% 25% 25% 10% 30%;
+}
+
+.modal_student p {
+    margin: auto 0;
+}
+
+.modal_remove {
+    padding: 10%;
+}
+
+button.remove_student,
+button.add_student {
+    cursor: pointer;
+    width: 100%;
+    padding: 5%;
+    margin: auto 0;
+    border-radius: 1rem;
+    background-color: var(--red);
+    color: white;
+}
+
+button.add_student {
+    background-color: green;
+}
+
+
+.modal_voldemort {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    padding: 4rem;
+}
+
+.modal_voldemort img{
+    width: 100%;
+    border-radius: .7rem;
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.137);
+}
+
+.modal_voldemort h2{
+    position: absolute;
+    top: 20%;
+    right: 12%;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    font-size: 2.2rem;
+}
