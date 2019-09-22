@@ -1,4 +1,5 @@
 "use strict"
+console.log("Write 'hackHogwarts('Your name')' to heck into a Hogwarts student list");
 const fetchLink = "http://petlatkea.dk/2019/hogwartsdata/students.json";
 const familyLink = "http://petlatkea.dk/2019/hogwartsdata/families.json";
 const sortBtn = document.querySelectorAll(".inputSort");
@@ -21,13 +22,8 @@ let housesNumber = {
 }
 
 let bloodArray = ["pure", "plain", "half"];
-
-/* JSONFetch();
-
-function JSONFetch() {
-    fetch(fetchLink).then(result => result.json()).then(data => createArray(data));
-};
- */
+// Used Promise.all to make sure that second fetch will start after the first one will be completed
+// source: https://teamtreehouse.com/library/manage-multiple-requests-with-promiseall
 const urls = [
     'http://petlatkea.dk/2019/hogwartsdata/families.json',
     'http://petlatkea.dk/2019/hogwartsdata/students.json'
@@ -61,10 +57,7 @@ function parseJSON(response) {
     return response.json();
 }
 
-function createBloodArray(data) {
-    familyNames = data;
-}
-
+//Create array from fetched students
 function createArray(data) {
     data.forEach(data => {
         let student = {
@@ -96,9 +89,8 @@ function createArray(data) {
 
     let firstStudentId = "";
     studentArray[9].photo = false;
-    studentArray[27].squad = studentArray[29].squad = studentArray[33].squad = studentArray[31].squad = "0";
     studentArray[14].sameFirstLetter = studentArray[19].sameFirstLetter = true;
-    checkBlood(familyNames, studentArray);
+    addBlood(familyNames, studentArray);
     fullArray = studentArray;
     countStudents(fullArray);
     createStudentList(studentArray);
@@ -107,13 +99,19 @@ function createArray(data) {
     fillProfile(firstStudentId, studentArray);
 }
 
+//Add every student his ID
 function addID(student) {
     student.id = studentsNumber;
     studentsNumber++;
-
 }
 
-function checkBlood(familyNames, studentArray) {
+//Create array of pure and half-pure students last names
+function createBloodArray(data) {
+    familyNames = data;
+}
+
+//Add blood status to students
+function addBlood(familyNames, studentArray) {
     pure = familyNames.pure;
     half = familyNames.half;
 
@@ -146,6 +144,7 @@ function checkBlood(familyNames, studentArray) {
     }
 }
 
+//Add event listeners to filter and sort elements
 function addFilterListeners(studentArray) {
     filterBtn.forEach(e => {
         e.addEventListener("click", e => {
@@ -154,7 +153,15 @@ function addFilterListeners(studentArray) {
     });
 }
 
-//SEPARATE
+function addSortListeners(studentArray) {
+    sortBtn.forEach(e => {
+        e.addEventListener("click", e => {
+            sortArrays(e, studentArray)
+        })
+    });
+}
+
+//Separate names
 function separateNames(student) {
     let i, spaces = 0;
     let lastSpace = student.fullName.lastIndexOf(" ");
@@ -188,9 +195,10 @@ function separateNames(student) {
 
 }
 
+//Create student list
 function createStudentList(studentArray) {
     if (hacked == true) {
-        checkBlood(familyNames, studentArray);
+        addBlood(familyNames, studentArray);
     }
     document.querySelector('.students_fill').textContent = "";
     for (i = 0; i < studentArray.length; i++) {
@@ -237,33 +245,7 @@ function createStudentList(studentArray) {
     }
 }
 
-
-
-
-/* function sortArrays(studentArray) {
-
-    document.querySelectorAll(".inputSort").forEach(function (e) {
-        if (e.checked) {
-            if (e.classList.contains("sortByFirstName")) {
-                studentArray = studentArray.sort(function (a, b) {
-                    return a.firstName.localeCompare(b.firstName);
-                });
-            }
-            if (e.classList.contains("sortByLastName")) {
-                studentArray = studentArray.sort(function (a, b) {
-                    return a.lastName.localeCompare(b.lastName);
-                });
-            }
-            if (e.classList.contains("sortByHouse")) {
-                studentArray = studentArray.sort(function (a, b) {
-                    return a[house].localeCompare(b[house]);
-                });
-            }
-
-        }
-    })
-} */
-
+//Sort list
 function sortArrays(e, studentArray) {
     let sortBy;
     switch (e.target.id) {
@@ -286,15 +268,13 @@ function sortArrays(e, studentArray) {
             sortBy = "squad";
             break;
     }
-
     studentArray = studentArray.sort((a, b) => {
         return a[sortBy].localeCompare(b[sortBy]);
     })
-
-
     createStudentList(studentArray);
 }
 
+//Filter list
 function filterElements(e, studentArray) {
     let selected;
     if (e == null) {
@@ -327,14 +307,7 @@ function filterElements(e, studentArray) {
 
 }
 
-function addSortListeners(studentArray) {
-    sortBtn.forEach(e => {
-        e.addEventListener("click", e => {
-            sortArrays(e, studentArray)
-        })
-    });
-}
-
+//Set right casing for student objects
 function Casing(student) {
     for (let objects in student) {
         if (!((student[objects] == false) || (student[objects] == true))) {
@@ -351,6 +324,7 @@ function Casing(student) {
 
 }
 
+//Check the number of students in each group
 function countStudents(studentArray) {
     house_1 = house_2 = house_3 = house_4 = expelled = attending = 0;
     for (i = 0; i < studentArray.length; i++) {
@@ -385,7 +359,7 @@ function countStudents(studentArray) {
 
 }
 
-
+//Show the profile of selected student
 function fillProfile(e, studentArray) {
     let id, photo,studentClicked, status, squad_status, prefect_status;
     if (e == "") {
@@ -476,7 +450,7 @@ function fillProfile(e, studentArray) {
     addProfileListeners(studentClicked, studentArray);
 }
 
-
+//Add event listeners to buttons in selected student profile
 function addProfileListeners(studentClicked, studentArray) {
     expelBtn.addEventListener("click", function () {
         expelStudent(studentClicked, studentArray);
@@ -495,6 +469,7 @@ function addProfileListeners(studentClicked, studentArray) {
     })
 }
 
+//Expel selected student
 function expelStudent(studentClicked, studentArray) {
     if (studentClicked.hacked) {
         document.querySelector(".modal_voldemort").style.visibility = "visible";
@@ -510,6 +485,7 @@ function expelStudent(studentClicked, studentArray) {
     }
 }
 
+//Make selected student a prefect
 function addPrefectStudent(studentClicked, fullArray) {
     if (housesNumber[studentClicked.house] < 2) {
         studentClicked.prefect = true;
@@ -523,10 +499,12 @@ function addPrefectStudent(studentClicked, fullArray) {
     fillProfile(targetClicked, studentArray);
 }
 
+//Show the option of removing student from prefect if they are more than 2 in one house
 function showModal(studentClicked, studentArray) {
     alreadyRemoved = false;
     document.querySelector('.modal').style.display = "block";
     document.querySelector('.modal_fill').textContent = "";
+    document.querySelector(".modal h2").textContent = "There are already two prefects in this house, you have to remove one to continue";
     for (i = 0; i < studentArray.length; i++) {
         if ((studentArray[i].prefect == true) && (studentArray[i].house == studentClicked.house)) {
             let clone = document.querySelector(".template_modal").content.cloneNode(true);
@@ -565,6 +543,7 @@ function addRemovePrefectListeners(studentClicked) {
     });
 }
 
+//Remove prefect status from selected student
 function removePrefect(e, studentClicked) {
     foundStudent = findStudentByID(e.target.id);
     foundStudent.prefectHouse = "z";
@@ -572,11 +551,13 @@ function removePrefect(e, studentClicked) {
     housesNumber[studentClicked.house]--;
     e.target.parentElement.parentElement.style.display = "none";
     if (!alreadyRemoved) {
+        document.querySelector(".modal h2").textContent = "Now you can add a prefect status to selected student";
         addPrefectAddingOption(studentClicked);
         alreadyRemoved = true;
     };
 }
 
+//Show option for adding a prefect to a selected student after removing a prefect from other
 function addPrefectAddingOption(studentClicked) {
     let clone = document.querySelector(".template_modal").content.cloneNode(true);
     clone.querySelector(".modal_profile_photo").src = document.querySelector(".student_profile_photo").src;
@@ -598,7 +579,7 @@ function addPrefectListener(studentClicked) {
     });
 }
 
-
+//Add selected student to Inquisitorial Squad
 function addSquadStudent(studentClicked) {
     if ((studentClicked.blood == "pure") || (studentClicked.house == "Slytherin")) {
         studentClicked.squad = "0";
@@ -617,7 +598,7 @@ function addSquadStudent(studentClicked) {
     }
 }
 
-
+//Remove selected student from Inquisitorial Squad
 function removeSquadStudent(studentClicked) {
     studentClicked.squad = "1";
     addSquadBtn.style.display = "block";
@@ -626,6 +607,7 @@ function removeSquadStudent(studentClicked) {
     filterElements(actualFilter, studentArray);
     fillProfile(targetClicked, studentArray);
 }
+
 
 function removePrefectStudent(studentClicked) {
     studentClicked.prefect = false;
@@ -637,6 +619,7 @@ function removePrefectStudent(studentClicked) {
     fillProfile(targetClicked, studentArray);
 }
 
+//Find student by ID
 function findStudentByID(id) {
     function findStudent(obj) {
         if (obj.id == id) {
@@ -650,8 +633,8 @@ function findStudentByID(id) {
 
     return found;
 }
-console.log("Write 'hackHogwarts('Your name')' to heck into a Hogwarts student list");
 
+//Function for "hacking" the student list
 function hackHogwarts(name) {
     let student = {
         firstName: "",

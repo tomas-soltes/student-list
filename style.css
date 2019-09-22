@@ -287,6 +287,11 @@ span {
 button,
 .button {
     cursor: pointer;
+    border: none;
+}
+
+button:focus{
+    outline: none;
 }
 
 .expelBtn,
